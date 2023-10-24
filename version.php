@@ -25,7 +25,9 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'theme_haskiminimal';
-$plugin->release = '0.1.0';
 $plugin->version = 2023101600;
 $plugin->requires = 2022112800;
-$plugin->maturity = MATURITY_ALPHA;
+$plugin->dependencies = [
+    'theme_boost' => '2022112800'
+];
+
