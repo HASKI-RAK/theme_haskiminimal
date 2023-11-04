@@ -32,12 +32,36 @@
     }
 
 }}
+<script>
+function zoomout(){
+    const element = document.getElementsByClassName("h5p-player")[0];
+    let scalewidth = element.getBoundingClientRect().width/ element.offsetWidth;
+    let scaleheight = element.getBoundingClientRect().height/ element.offsetHeight;
+    if(scaleheight > 0.1){
+        scalewidth -= 0.1;
+        scaleheight -= 0.1;
+        const scaleproperty = "scale(" + scalewidth + ", " + scaleheight + ")";
+        element.style.transform = scaleproperty;
+    }
+}
+function zoomin(){
+    element = document.getElementsByClassName("h5p-player")[0];
+    let scalewidth = element.getBoundingClientRect().width/ element.offsetWidth;
+    let scaleheight = element.getBoundingClientRect().height/ element.offsetHeight;
+    if(scaleheight < 1.0){
+        scalewidth += 0.1;
+        scaleheight += 0.1;
+        const scaleproperty = "scale(" + scalewidth + ", " + scaleheight + ")";
+        element.style.transform = scaleproperty;
+    }
+}
+</script>
 <iframe src="{{embedurl}}" name="h5player" width=":w" height=":h"
    allowfullscreen="allowfullscreen" class="h5p-player w-100 border-0 werwolf"
    style="height: 0px;" id="{{uniqid}}-h5player">
 </iframe>
-<button name="Larger" class="zoom-in-button">+</button>
-<button name="Smaller" class="zoom-out-button">-</Button>
+<button name="Larger" class="zoom-in-button" onclick="zoomin()">+</button>
+<button name="Smaller" class="zoom-out-button" onclick="zoomout()">-</Button>
 {{#editurl}}
     <a href="{{editurl}}">{{#str}}editcontent, core_h5p{{/str}}</a>
 {{/editurl}}
