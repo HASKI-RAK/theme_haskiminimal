@@ -45,8 +45,3 @@ function theme_haskiminimal_get_main_scss_content($theme) {
     $post = file_get_contents($CFG->dirroot . '/theme/haskiminimal/scss/post.scss');
     return $pre . "\n" . $scss . "\n" . $post;
 }
-
-function theme_haskiminimal_before_footer(){
-    global $PAGE;
-    $PAGE->requires->js_call_amd('theme_haskiminimal/frameview', 'init');
-}

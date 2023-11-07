@@ -32,12 +32,17 @@
     }
 
 }}
+{{#js}}
+require(['theme_haskiminimal/frameview'], function(Frameview) {
+    Frameview.init();
+});
+{{/js}}
 <script>
 function zoomout(){
     const element = document.getElementsByClassName("h5p-player")[0];
     let scalewidth = element.getBoundingClientRect().width/ element.offsetWidth;
     let scaleheight = element.getBoundingClientRect().height/ element.offsetHeight;
-    if(scaleheight > 0.1){
+    if(scaleheight > 0.2){
         scalewidth -= 0.1;
         scaleheight -= 0.1;
         const scaleproperty = "scale(" + scalewidth + ", " + scaleheight + ")";
@@ -60,8 +65,8 @@ function zoomin(){
    allowfullscreen="allowfullscreen" class="h5p-player w-100 border-0 werwolf"
    style="height: 0px;" id="{{uniqid}}-h5player">
 </iframe>
-<button name="Larger" class="zoom-in-button" onclick="zoomin()">+</button>
-<button name="Smaller" class="zoom-out-button" onclick="zoomout()">-</Button>
+<button name="Larger" class="btn btn-icon bg-secondary icon-no-margin btn-footer-popover larger-button" onclick="zoomin()"><b class="icon fa fa-plus"></b></button>
+<button name="Smaller" class="btn btn-icon bg-secondary icon-no-margin btn-footer-popover smaller-button" onclick="zoomout()"><b class="fa fa-minus"></b></Button>
 {{#editurl}}
     <a href="{{editurl}}">{{#str}}editcontent, core_h5p{{/str}}</a>
 {{/editurl}}
