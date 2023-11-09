@@ -40,24 +40,32 @@ require(['theme_haskiminimal/frameview'], function(Frameview) {
 <script>
 function zoomout(){
     const element = document.getElementsByClassName("h5p-player")[0];
-    let scalewidth = element.getBoundingClientRect().width/ element.offsetWidth;
-    let scaleheight = element.getBoundingClientRect().height/ element.offsetHeight;
-    if(scaleheight > 0.2){
-        scalewidth -= 0.1;
-        scaleheight -= 0.1;
-        const scaleproperty = "scale(" + scalewidth + ", " + scaleheight + ")";
+    let scale = element.getBoundingClientRect().height/ element.offsetHeight;
+    if(scale > 0.2){
+        scale -= 0.1;
+        const scaleproperty = "scale(" + scale + ", " + scale + ")";
         element.style.transform = scaleproperty;
+        let largerbutton = document.getElementById("larger-button");
+        largerbutton.disabled = false;
+    }
+    if(scale < 0.2){
+        let smallerbutton = document.getElementById("smaller-button");
+        smallerbutton.disabled = true;
     }
 }
 function zoomin(){
-    element = document.getElementsByClassName("h5p-player")[0];
-    let scalewidth = element.getBoundingClientRect().width/ element.offsetWidth;
-    let scaleheight = element.getBoundingClientRect().height/ element.offsetHeight;
-    if(scaleheight < 1.0){
-        scalewidth += 0.1;
-        scaleheight += 0.1;
-        const scaleproperty = "scale(" + scalewidth + ", " + scaleheight + ")";
+    let element = document.getElementsByClassName("h5p-player")[0];
+    let scale = element.getBoundingClientRect().height/ element.offsetHeight;
+    if(scale < 1.0){
+        scale += 0.1;
+        const scaleproperty = "scale(" + scale + ", " + scale + ")";
         element.style.transform = scaleproperty;
+        let smallerbutton = document.getElementById("smaller-button");
+        smallerbutton.disabled = false;
+    }
+    if(scale >= 1.0){
+        let largerbutton = document.getElementById("larger-button");
+        largerbutton.disabled = true;
     }
 }
 </script>
@@ -65,8 +73,12 @@ function zoomin(){
    allowfullscreen="allowfullscreen" class="h5p-player w-100 border-0 werwolf"
    style="height: 0px;" id="{{uniqid}}-h5player">
 </iframe>
-<button name="Larger" class="btn btn-icon bg-secondary icon-no-margin btn-footer-popover larger-button" onclick="zoomin()"><b class="icon fa fa-plus"></b></button>
-<button name="Smaller" class="btn btn-icon bg-secondary icon-no-margin btn-footer-popover smaller-button" onclick="zoomout()"><b class="fa fa-minus"></b></Button>
+<button id="larger-button" name="Larger" class="btn btn-icon bg-secondary icon-no-margin btn-footer-popover larger-button" onclick="zoomin()" disabled>
+    <b class="icon fa fa-plus">
+</b></button>
+<button id="smaller-button" name="Smaller" class="btn btn-icon bg-secondary icon-no-margin btn-footer-popover smaller-button" onclick="zoomout()">
+     <b class="fa fa-minus"></b>
+</Button>
 {{#editurl}}
     <a href="{{editurl}}">{{#str}}editcontent, core_h5p{{/str}}</a>
 {{/editurl}}
