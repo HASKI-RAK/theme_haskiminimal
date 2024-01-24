@@ -159,7 +159,9 @@
                             </div>
                         {{/overflow}}
                         {{{ output.main_content }}}
-                        {{{ output.activity_navigation }}}
+                        {{^viewedinhaski}}
+                            {{{ output.activity_navigation }}}
+                        {{/viewedinhaski}}
                         {{{ output.course_content_footer }}}
 
                     </section>
