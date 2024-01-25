@@ -59,18 +59,31 @@
     {{^viewedinhaski}}
         {{> theme_boost/navbar }}
         {{#courseindex}}
-        {{< theme_boost/drawer }}
-            {{$id}}theme_boost-drawers-courseindex{{/id}}
-            {{$drawerclasses}}drawer drawer-left {{#courseindexopen}}show{{/courseindexopen}}{{/drawerclasses}}
-            {{$drawercontent}}
-                {{{courseindex}}}
-            {{/drawercontent}}
-            {{$drawerpreferencename}}drawer-open-index{{/drawerpreferencename}}
-            {{$drawerstate}}show-drawer-left{{/drawerstate}}
-            {{$tooltipplacement}}right{{/tooltipplacement}}
-            {{$closebuttontext}}{{#str}}closecourseindex, core{{/str}}{{/closebuttontext}}
-        {{/ theme_boost/drawer}}
-    {{/courseindex}}
+            {{< theme_boost/drawer }}
+                {{$id}}theme_boost-drawers-courseindex{{/id}}
+                {{$drawerclasses}}drawer drawer-left {{#courseindexopen}}show{{/courseindexopen}}{{/drawerclasses}}
+                {{$drawercontent}}
+                    {{{courseindex}}}
+                {{/drawercontent}}
+                {{$drawerpreferencename}}drawer-open-index{{/drawerpreferencename}}
+                {{$drawerstate}}show-drawer-left{{/drawerstate}}
+                {{$tooltipplacement}}right{{/tooltipplacement}}
+                {{$closebuttontext}}{{#str}}closecourseindex, core{{/str}}{{/closebuttontext}}
+            {{/ theme_boost/drawer}}
+        {{/courseindex}}
+    {{/viewedinhaski}}
+    {{#viewedinhaski}}
+        {{#courseindex}}
+            {{< theme_haskiminimal/drawerdummy }}
+                {{$id}}theme_boost-drawers-courseindex{{/id}}
+                {{$drawerclasses}}drawer drawer-left {{#courseindexopen}}show{{/courseindexopen}}{{/drawerclasses}}
+                {{$drawercontent}}
+                    {{{courseindex}}}
+                {{/drawercontent}}
+                {{$drawerpreferencename}}drawer-open-index{{/drawerpreferencename}}
+                {{$drawerstate}}show-drawer-left{{/drawerstate}}
+            {{/ theme_haskiminimal/drawerdummy}}
+        {{/courseindex}}
     {{/viewedinhaski}}
     {{#hasblocks}}
         {{< theme_boost/drawer }}

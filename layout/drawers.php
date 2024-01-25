@@ -30,11 +30,8 @@ require_once($CFG->dirroot . '/course/lib.php');
 // Add block button in editing mode.
 $addblockbutton = $OUTPUT->addblockbutton();
 
-//$currenturl = $PAGE->url->raw_out();
-//$viewedinhaski = str_contains($currenturl, 'haski');
 
-$_referer = $_SERVER["HTTP_REFERER"];
-$viewedinhaski = str_contains($_referer, 'fakedomain.com:8080') ?? str_contains($_referer, 'haski');
+$viewedinhaski = optional_param('haski', false, PARAM_BOOL);
 
 user_preference_allow_ajax_update('drawer-open-index', PARAM_BOOL);
 user_preference_allow_ajax_update('drawer-open-block', PARAM_BOOL);

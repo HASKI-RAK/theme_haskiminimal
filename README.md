@@ -3,6 +3,11 @@
 Moodle Theme based on Boost to show a minimal view of Moodle on the HASKI site. 
 Additionally adds Zoom Buttons to H5P-Activities.
 
+## Use ##
+
+Moodle URL must contain haski=true variable to show the Page without navigation
+elements.
+
 ## Installing via uploaded ZIP file ##
 
 1. Log in to your Moodle site as an admin and go to _Site administration >
