@@ -190,8 +190,9 @@
 </html>
 {{#js}}
 M.util.js_pending('theme_boost/loader');
-require(['theme_boost/loader', 'theme_boost/drawer'], function(Loader, Drawer) {
+require(['theme_boost/loader', 'theme_boost/drawer', 'theme_haskiminimal/removecontinue'], function(Loader, Drawer, RemoveContinue) {
     Drawer.init();
+    RemoveContinue.init();
     M.util.js_complete('theme_boost/loader');
 });
 {{/js}}
